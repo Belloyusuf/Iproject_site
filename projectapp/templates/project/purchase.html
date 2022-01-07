@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}purchase{% endblock title %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <h4>Purchase The complete Project Material</h4>
+        <h3>$3000</h3>
+        <h2>Pay via Bank Deposite or Transfer</h2>
+        <ul>
+            <li><span class="text-muted">Bank:</span><b>First Bank</b></li>
+            <li><span class="text-muted">Account Number:</span><b>0451205941</b></li>
+            <li><span class="text-muted">Account Name:</span><b>Coding Techonoloy Limited</b></li>
+        </ul>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form }}
+        </form>
+        <button type="button" class="btn btn-default btn-lg btn-block">Or</button>
+        <P>Please send your project topic and email address after payment us</P>
+        <button type="button" class="btn btn-primary btn-lg btn-block">PAY WITH PAYPAL</button>
+    </div>
+{% endblock content %}

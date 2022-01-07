@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title  %}
+    search
+{% endblock title  %}
+
+{% block content %}
+    <div class="container">
+        <div class="jumbotron border shadow">
+            <h4> <span class="text-muted">You searched for</span> "{{ request.GET.q }}"</h4>
+            {% if data.count == 0 %}
+                No such project. We recommend you to write it in wish list <a href="{% url 'wishlist'%}">Go ahead</a>
+            {% else %}
+            <span class="text-muted">{{ data.count }} Project found</span>
+            {% endif %}
+            <br>
+            <a href="{% url 'project_list'%}" class="btn btn-success btn-sm">Back to home</a>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                 <div id="main" class="product-list">
+            <h3> {% if category %} {{ category.name }} {% else %} Projects {% endif %}</h3>
+            <hr>
+                {% for project in projects %}
+                <div class="item">
+                    <a href="{{ project.get_absolute_url }}">
+                        <img src="{% if project.image %}" {{ project.image.url }} {% else %} {% static 'images/cfoo.jpg'%} {% endif %} alt="">
+                    </a>
+                    <a href="{{ project.get_absolute_url }}"> {{ project.name }}</a>
+                    <br>
+                    ${{ project.price}}
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+
+        {% comment %} <div id="main" class="product-list">
+            <h3> {% if category %} {{ category.name }} {% else %} Projects {% endif %}</h3>
+            <hr>
+            {% for project in projects %}
+                <div class="item">
+                    <a href="{{ project.get_absolute_url }}">
+                        <img src="{% if project.image %}" {{ project.image.url }} {% else %} {% static 'images/cfoo.jpg'%} {% endif %} alt="">
+                    </a>
+                    <a href="{{ project.get_absolute_url }}"> {{ project.name }}</a>
+                    <br>
+                    ${{ project.price}}
+                </div>
+            {% endfor %}
+        </div> {% endcomment %}
+    </div>
+{% endblock content %}
+
+
+
+
