@@ -14,7 +14,7 @@
             <div class="media-body">
                 <h1>{{ project.name }}</h1>
               <h5 class="mt-0">Price ${{ project.price }}</h5>
-              <p>{{ project.file.url | truncatewords:300 }}</p>
+              <p>{{ project|filesizeformat}}</p>
               
               <p>I'm walking on air (tonight). But down to earth. You're original, cannot be replaced. But in another life I would be your girl. We drove to Cali and got drunk on the beach. We can dance, until we die, you and I, will be young forever. Saw you downtown singing the Blues.</p>
             </div>

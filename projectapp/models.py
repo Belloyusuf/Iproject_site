@@ -47,6 +47,7 @@ class Project(models.Model):
     
     
 class Wishlist(models.Model):
+    """ Customer wish list """
     course = models.CharField(("Course name"), max_length=150)
     topic = models.CharField(("Project Topic"), max_length=50)
     description = models.TextField()
@@ -62,6 +63,7 @@ class Wishlist(models.Model):
     
 
 class Plan(models.Model):
+    """ For plan and pricing """
     title = models.CharField(max_length=150)
     body = models.TextField()
     created = models.DateTimeField(auto_now=False, auto_now_add=True)
@@ -73,23 +75,6 @@ class Plan(models.Model):
 
     def __str__(self):
         return self.title
-
-    def get_absolute_url(self):
-        return reverse("Plan_detail", kwargs={"pk": self.pk})
-
-class UserGuid(models.Model):
-    title = models.CharField(max_length=200)
-    body = models.TextField()
-
-    class Meta:
-        verbose_name = ("UserGuid")
-        verbose_name_plural = ("UserGuids")
-
-    def __str__(self):
-        return self.title
-
-    def get_absolute_url(self):
-        return reverse("UserGuid_detail", kwargs={"pk": self.pk})
 
 
 class Purchase(models.Model):

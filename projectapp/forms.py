@@ -14,7 +14,7 @@ class Customerform(forms.ModelForm):
         
         widgets = {
             'course': TextInput(attrs={
-                
+                'class':'form-control'
             })
         }
         

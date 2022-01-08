@@ -1,12 +1,6 @@
 from django.contrib import admin
-from . models import Category, Project, Wishlist, UserGuid, Plan
+from . models import Category, Project, Wishlist, Plan
 
-
-@admin.register(UserGuid)
-class UserGuidAdmin(admin.ModelAdmin):
-    list_display = ['title']
-    list_filter = ['title']
-    
 
 @admin.register(Plan)
 class PlanAdmin(admin.ModelAdmin):

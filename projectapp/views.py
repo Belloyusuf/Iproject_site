@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Category, Project, Purchase, Wishlist, Plan, UserGuid
+from .models import Category, Project, Purchase, Plan
 from . forms import Customerform
 from django.views.generic.edit import CreateView
 
@@ -39,10 +39,8 @@ def search(request):
    
    
 def UserGuid_detail(request):
-    guids = UserGuid.objects.all()
     plans = Plan.objects.all()
-    context = {'guids':guids,
-               'plans':plans}
+    context = {'plans':plans}
     return render(request, 'project/guide.html', context)
 
 

@@ -4,61 +4,33 @@
 {% block content %}
 <div class="container">
     <div class="jumbotron border shadow" id="guide">
-        <h2>Troubleshoot your problem's</h2>
+        <h2>Troubleshoot your problem's <span> <i class="fas fa-cog fa-fw"></i></span></h2>
     </div>
-   <div class="guide-nav">
-    <button type="button" class="btn btn-secondary btn-sm">
-        <a href="#about">About project</a>
-    </button>
-    <button type="button" class="btn btn-primary btn-sm">
-        <a href="#guarantee">Project Guarantee </a>
-    </button>
-    <button type="button" class="btn btn-info btn-sm">
-        <a href="#buy-project">Buy project</a>
-    </button>
-    <button type="button" class="btn btn-success btn-sm">
-        <a href="#payment">Payment problem</a>
-    </button>
-    <button type="button" class="btn btn-warning btn-sm">
-        <a href="#sell-project">Sell project</a>
-    </button>
-    <button type="button" class="btn btn-danger btn-sm">
-        <a href="#send-project">Send course</a>
-    </button>
-   </div>
+
+      <a class="btn btn-outline-secondary" href="#about">About project</a>
+      <a class="btn btn-outline-secondary" href="#guarantee">Project Guarantee </a>
+      <a class="btn btn-outline-secondary" href="#buy-project">Buy project</a>
+      <a class="btn btn-outline-secondary" href="#payment">Payment problem</a>
+      <a class="btn btn-outline-secondary" href="#sell-project">Sell project</a>
+      <a class="btn btn-outline-secondary" href="#send-project">Send course</a>
 
    <div class="row" style="margin-top: 20px;">
      <div class="col-sm-5">
-      <div class="list-group">
+      <div class="list-group" >
         <h2 class="feedback">Plans and Pricing </h2>
-        {% for plan in plands %}
+        {% for plan in plans %}
         <a href="#" class="list-group-item list-group-item-action">
           <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">{{ plan.title }}</h5>
+            <h5 style="color: maroon;" class="mb-1">{{ plan.title }}</h5>
             <small>{{ plan.created}}</small>
           </div>
           <p class="mb-1">{{ plan.body }}</p>
           <small>{{ plan.company }}</small>
         </a>
         {% endfor %}
-        <!-- {% comment %} <a href="#" class="list-group-item list-group-item-action">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small class="text-muted">3 days ago</small>
-          </div>
-          <p class="mb-1">Some placeholder content in a paragraph.</p>
-          <small class="text-muted">And some muted small print.</small>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small class="text-muted">3 days ago</small>
-          </div>
-          <p class="mb-1">Some placeholder content in a paragraph.</p>
-          <small class="text-muted">And some muted small print.</small>
-        </a> {% endcomment %} -->
       </div>
-      
+      <p></p>
+      <p></p>
 
       <!-- CUSTOMERS FEEDBACK  -->
        <div class="list-group">
@@ -89,21 +61,6 @@
         </a>
       </div>
      </div> <!-- End of recent action -->
-     
-     {% for guid in guids %}
-     {% endfor %}
-     <div class="col-sm-7">
-      <div class="shadow p-3 mb-5 bg-white rounded">
-        <div class="guide-content">
-         <h4 id="about">{{ guid.title }}</h4>
-         <p class="guide-style"> 
-            {{ guid.body }}
-         </p>
-         {% endfor %}
-         
-        </div>
-       </div> <!-- End of guid list -->
-     </div>
    </div>
 </div>
 {% endblock content %}

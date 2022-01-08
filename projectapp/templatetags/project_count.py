@@ -7,4 +7,4 @@ register = template.Library()
 def total_project():
     return Project.objects.filter(available=True).count()
 
-
+# 
