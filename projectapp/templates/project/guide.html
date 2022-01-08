@@ -6,7 +6,16 @@
     <div class="jumbotron border shadow" style="margin-top: 10%; background-color:#343A40; color:white;" >
         <h2>Troubleshoot your problem's <span> <i class="fas fa-cog fa-fw"></i></span></h2>
     </div>
-
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+            <p {% if message.tags %} class="{{ message.tags }}"{% endif %} >{{ message }} </p>
+          </div>
+       
+        {% endfor %}
+    </ul>
+    {% endif %}
       <a class="btn btn-outline-primary" href="#about">About project</a>
       <a class="btn btn-outline-secondary" href="#guarantee">Project Guarantee </a>
       <a class="btn btn-outline-success" href="#buy-project">Buy project</a>

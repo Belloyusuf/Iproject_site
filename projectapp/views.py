@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Category, Project, Purchase, Plan
 from . forms import Customerform
 from django.views.generic.edit import CreateView
+from django.contrib import messages
 
 
 
@@ -49,10 +50,13 @@ def user_wishlist(request):
         form = Customerform(request.POST)
         if form.is_valid():
             form.save()
+            messages.add_message(request, messages.INFO, "Added successfully")
+            return redirect('/project/UserGuid_detail/')
     else:
         form = Customerform()
     context = {'form':form}
     return render(request,'project/wish.html', context)
+
 
 
 class PurchaseCreateView(CreateView):
