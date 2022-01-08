@@ -48,9 +48,9 @@ class Project(models.Model):
     
 class Wishlist(models.Model):
     """ Customer wish list """
-    course = models.CharField(("Course name"), max_length=150)
+    course = models.CharField(("Course Name"), max_length=150)
     topic = models.CharField(("Project Topic"), max_length=50)
-    description = models.TextField()
+    description = models.TextField(('Project Description'))
     created = models.DateTimeField(auto_now=False, auto_now_add=True)
     school_name = models.CharField(("Name of your school"), max_length=100, blank=False, null=False)
     

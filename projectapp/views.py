@@ -45,13 +45,15 @@ def UserGuid_detail(request):
 
 
 def user_wishlist(request):
-    form = Customerform()
     if request.method=='POST':
         form = Customerform(request.POST)
         if form.is_valid():
             form.save()
+    else:
+        form = Customerform()
     context = {'form':form}
     return render(request,'project/wish.html', context)
+
 
 class PurchaseCreateView(CreateView):
     model = Purchase

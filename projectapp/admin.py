@@ -7,10 +7,10 @@ class PlanAdmin(admin.ModelAdmin):
     list_display = ['title', 'created', 'company']
     list_filter = ['title', 'company']
 
-# @admin.register(Wishlist)
-# class WishlistAdmin(admin.ModelAdmin):
-#     list_display = ['course', 'topic', 'created', 'school_name']
-#     list_filter = ['course', 'school_name', 'created']
+@admin.register(Wishlist)
+class WishlistAdmin(admin.ModelAdmin):
+    list_display = ['course', 'topic', 'created', 'school_name']
+    list_filter = ['course', 'school_name', 'created']
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
