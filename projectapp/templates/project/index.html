@@ -65,7 +65,7 @@
     <h3> <span><i class="fa fa-hashtag"></i> </span> Categories</h3>
     <a href="{% url 'project_list'%}" class="btn btn-outline-secondary btn-sm">All Projects</a>
     {% for category in categories %}
-      <a class="btn btn-outline-secondary btn-sm" href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+      <a class="btn btn-outline-secondary btn-sm" href="{{ category.get_absolute_url }}" title="{{ category.name }} project">{{ category.name }}</a>
     {% endfor %}
       <hr>
 
@@ -81,7 +81,7 @@
                 </a>
                 <div class="card-body">
                   <p class="card-text">{{ project.name}} <span> <br> <i class="text-muted">${{ project.price}}</i></span></p>
-                  <a href="{{ project.get_absolute_url }}" class="btn btn-secondary btn-sm" title="download project">Download <span> <i class="fa fa-download"></i></span></a>
+                  <a href="{{ project.get_absolute_url }}" class="btn btn-secondary btn-sm" title="download project now">Download <span> <i class="fa fa-download"></i></span></a>
                   <p class="card-text"><small class="text-muted">{{ category.name }}</small></p>
                 </div>
               </div>

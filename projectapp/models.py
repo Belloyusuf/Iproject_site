@@ -1,8 +1,9 @@
 from django.db import models
 from django.urls import reverse
 
-
+# Category class
 class Category(models.Model):
+    """ Category class """
     name = models.CharField(max_length=150)
     slug = models.SlugField(max_length=250, unique=True)
     
@@ -19,8 +20,9 @@ class Category(models.Model):
         return reverse("project_list_by_category", args=[self.slug])
     
 
-
+# Projec class 
 class Project(models.Model):
+    """ Class that would create a project file """
     category = models.ForeignKey(Category, on_delete=models.CASCADE,
                                  related_name='projects')
     name = models.CharField(max_length=150, db_index=True)
@@ -52,7 +54,7 @@ class Wishlist(models.Model):
     topic = models.CharField(("Project Topic"), max_length=50)
     description = models.TextField(('Project Description'))
     created = models.DateTimeField(auto_now=False, auto_now_add=True)
-    school_name = models.CharField(("Name of your school"), max_length=100, blank=False, null=False)
+    username = models.CharField(("Your name"), max_length=100, blank=False, null=False)
     
     
     def __str__(self):
@@ -80,3 +82,22 @@ class Plan(models.Model):
 class Purchase(models.Model):
     project = models.ForeignKey(Project, verbose_name=(""), on_delete=models.CASCADE)
     file = models.FileField(("Transaction invoice"),upload_to="purchase")
+    
+    
+
+class Comment(models.Model):
+    project = models.ForeignKey(Project, related_name='projects', on_delete=models.CASCADE)
+    name = models.CharField(("Username"),max_length=50)
+    email = models.EmailField(("Your Email"), max_length=250)
+    body = models.TextField(("Your comment"))
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True, auto_now_add=False)
+    active = models.BooleanField(default=True)
+    
+    class Meta:
+        ordering = ('-created',)
+    
+    def __str__(self):
+        return (f" Commented by {self.name} on {self.project}")
+    
+    

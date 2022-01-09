@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Category, Project, Purchase, Plan
+from .models import Category, Project, Purchase, Plan, Wishlist
 from . forms import Customerform
 from django.views.generic.edit import CreateView
 from django.contrib import messages
@@ -13,12 +13,14 @@ def project_list(request, category_slug=None):
     projects = Project.objects.filter(available=True)
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
-        projects = projects.filter(category=category)
+        projects = projects.objects.all(category=category)
     return render(request, 
                   'project/index.html',
                   {'category':category,
                   'categories':categories,
-                  'projects':projects})
+                  'projects':projects,
+                  'section':'projects',
+                  'section':'categories'})
 
 
 def project_detail(request, id, slug):
@@ -41,20 +43,24 @@ def search(request):
    
 def UserGuid_detail(request):
     plans = Plan.objects.all()
-    context = {'plans':plans}
+    context = {'plans':plans,
+               'section':'UserGuid_detail'}
     return render(request, 'project/guide.html', context)
 
 
 def user_wishlist(request):
+    wishlist = Wishlist.objects.all()
     if request.method=='POST':
         form = Customerform(request.POST)
         if form.is_valid():
             form.save()
             messages.add_message(request, messages.INFO, "Added successfully")
-            return redirect('/project/UserGuid_detail/')
+            return redirect('UserGuid_detail/')
     else:
         form = Customerform()
-    context = {'form':form}
+    context = {'form':form,
+               'wishlist':wishlist,
+               'section':'user_wishlist'}
     return render(request,'project/wish.html', context)
 
 
