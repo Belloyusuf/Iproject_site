@@ -20,8 +20,8 @@ class PlanAdmin(admin.ModelAdmin):
 
 @admin.register(Wishlist)
 class WishlistAdmin(admin.ModelAdmin):
-    list_display = ['course', 'topic', 'created', 'username']
-    list_filter = ['course', 'username', 'created']
+    list_display = ['course', 'topic', 'email']
+    list_filter = ['course', 'email']
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):

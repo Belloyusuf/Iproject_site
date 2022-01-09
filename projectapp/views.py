@@ -55,7 +55,7 @@ def user_wishlist(request):
         if form.is_valid():
             form.save()
             messages.add_message(request, messages.INFO, "Added successfully")
-            return redirect('UserGuid_detail/')
+            # return redirect('wishlist/')
     else:
         form = Customerform()
     context = {'form':form,

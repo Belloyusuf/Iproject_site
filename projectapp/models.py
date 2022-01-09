@@ -54,7 +54,7 @@ class Wishlist(models.Model):
     topic = models.CharField(("Project Topic"), max_length=50)
     description = models.TextField(('Project Description'))
     created = models.DateTimeField(auto_now=False, auto_now_add=True)
-    username = models.CharField(("Your name"), max_length=100, blank=False, null=False)
+    email = models.EmailField(("Email"), max_length=254)
     
     
     def __str__(self):
