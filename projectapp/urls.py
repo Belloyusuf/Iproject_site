@@ -12,6 +12,7 @@ urlpatterns = [
     path('<int:id>/<slug:slug>/', views.project_detail, name='project_detail'),
     path('search', views.search, name='search'),
     path('UserGuid_detail/', views.UserGuid_detail, name='UserGuid_detail'),
+    path('comment/', views.user_comment, name='comment'),
     path('wishlist/', views.user_wishlist, name='wishlist'),
-    path("purchase/", PurchaseCreateView.as_view(), name="purchase"),
+    path('purchase/', PurchaseCreateView.as_view(), name="purchase"),
 ]

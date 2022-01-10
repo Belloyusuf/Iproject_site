@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title %} comment{% endblock title %}
+{% load static %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1>Comments </h1>
+    <p>Your feedback is our strieth</p>
+    <!-- Comment button-->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+        Comment
+    </button>
+      
+</div>
+<div class="container">
+  {% if messages %}
+  <ul class="messages">
+      {% for message in messages %}
+      <div class="alert alert-success" role="alert">
+          <p {% if message.tags %} class="{{ message.tags }}"{% endif %} >{{ message }} </p>
+        </div>
+    
+      {% endfor %}
+  </ul>
+  {% endif %}
+   <div class="list-group">
+     <h2 class="feedback">Customer's feedback </h2>
+     <hr />
+     {% for comment in comments %}
+     <ul class="list-unstyled">
+        <li class="media">
+          <img src="{% static '/images/image4.jpg'%}" style="border-radius: 25px;" height="50" width="50" class="mr-3" alt="...">
+          <div class="media-body">
+            <h5 class="mt-0 mb-1">{{ comment.project }}</h5>
+            <p>{{ comment.body }}</p>
+            <i class="text-muted">Commented by "{{ comment.email }}" on {{ comment.created }}</i>
+          </div>
+        </li>
+      </ul>
+      <hr>
+      {% endfor %}
+
+      <!-- Button trigger modal -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel"> Choose project you want comment on </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form method="post">
+                <h1>Comment <span><i class="fa fa-comment"></i></span></h1>
+                <hr>
+                  {% csrf_token %}
+                  <div class="form-group">
+                      <b>{{ form.name.label}}</b>
+                      {{ form.name }}
+                    <small id="emailHelp" class="form-text text-muted">Write project Course</small>
+                  </div>
+                  <div class="form-group">
+                      <b>{{ form.email.label }}</b>
+                      {{ form.email }}
+                    </div> 
+                    <div class="form-group">
+                        <b>{{ form.project.label}}</b>
+                      {{ form.project }}
+                    </div>
+                    <div class="form-group">
+                        <b>{{ form.body.label}}</b>
+                      {{ form.body }}
+                    </div>
+                  <button type="submit" class="btn btn-primary btn-sm btn-block">Comment</button>
+                </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

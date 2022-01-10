@@ -6,7 +6,7 @@
   <h5>Project Preview for "{{ project.name}}"</h5>
   <p> <span class="text-muted">Created on {{ project.created }} <br> And Updated on {{ project.updated}}</span></p>
   <a href="{% url 'purchase'%}" class="btn btn-success btn-sm">Download Complete Project <span> <i class="fa fa-download"></i></span></a>
-  <a href="/" class="btn btn-dark btn-sm ">Comment <span><i class="fa fa-comment"></i></span></a>
+  <a href="{% url 'comment'%}" class="btn btn-dark btn-sm ">Comment <span><i class="fa fa-comment"></i></span></a>
 </div>
     <div class="container">
         <div class="media">

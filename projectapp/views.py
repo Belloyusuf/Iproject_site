@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Category, Project, Purchase, Plan, Wishlist
-from . forms import Customerform
+from .models import Category, Comment, Project, Purchase, Plan, Wishlist
+from . forms import Customerform, CommentForm
 from django.views.generic.edit import CreateView
 from django.contrib import messages
 
@@ -49,6 +49,7 @@ def UserGuid_detail(request):
 
 
 def user_wishlist(request):
+    """ function that would handle a use wishlist """
     wishlist = Wishlist.objects.all()
     if request.method=='POST':
         form = Customerform(request.POST)
@@ -63,9 +64,25 @@ def user_wishlist(request):
                'section':'user_wishlist'}
     return render(request,'project/wish.html', context)
 
+# comment function
+def user_comment(request):
+    """ A form that would take care of user's coment """
+    comments = Comment.objects.filter(active=True)
+    if request.method=='POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.INFO, "Thanks for your feedback")
+    else:
+        form = CommentForm()
+    return render(request, 'project/comment.html',
+                    {'comments':comments,
+                    'form':form})
+
 
 
 class PurchaseCreateView(CreateView):
+    """ Class that would handle a form"""
     model = Purchase
     form_class = 'ProjectPurchase'
     template_name = "project/purchase.html"
