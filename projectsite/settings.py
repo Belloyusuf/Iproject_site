@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Sending project via email backend
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
 
 # Application definition
 

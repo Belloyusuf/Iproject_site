@@ -7,6 +7,15 @@ from django.forms.widgets import EmailInput, FileInput, Select, SelectMultiple, 
 from . models import Wishlist, Purchase, Comment
 
 
+
+class SharebyEmail(forms.Form):
+    """ Form that would handle sharing of projects via email """
+    name = forms.CharField( max_length=50, required=True)
+    email = forms.EmailField(required=True)
+    to = forms.EmailField(required=True)
+    comments = forms.CharField(widget=forms.Textarea,required=False)
+
+
 class Customerform(forms.ModelForm):
     class Meta:
         model = Wishlist
@@ -22,6 +31,7 @@ class Customerform(forms.ModelForm):
                 'placeholder':'E.g, Student Management System'
             }),
              'description': Textarea(attrs={
+                'rows':3, 
                 'class':'form-control',
                 
             }),
@@ -50,6 +60,7 @@ class CommentForm(forms.ModelForm):
                 'placeholder':'choose project'
             }),
             'body':Textarea(attrs={
+                'rows':3,
                 'class':'form-control'
             })
         }

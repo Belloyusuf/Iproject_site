@@ -65,19 +65,19 @@
     <h3> <span><i class="fa fa-hashtag"></i> </span> Categories</h3>
     <a href="{% url 'project_list'%}" class="btn btn-outline-secondary btn-sm">All Projects</a>
     {% for category in categories %}
-      <a class="btn btn-outline-secondary btn-sm" href="{{ category.get_absolute_url }}" title="{{ category.name }} project">{{ category.name }}</a>
+      <a {% if section == 'category' %} class="btn btn-outline-secondary btn-sm" {% endif %} href="{{ category.get_absolute_url }}" title="{{ category.name }} project">{{ category.name }}</a>
     {% endfor %}
       <hr>
 
         <!-- project list  -->
-        <div class="container">
-          <h3> {% if  category %} {{ category.name }} {% else %}All Projects {% endif %}</h3>
+          <h3 style="background-color: black; color:white; text-align:center"> {% if  category %} {{ category.name }} project's {% else %}All Projects {% endif %}</h3>
+          <hr>
           <div class="row"> 
             {% for project in projects %}
-            <div class="col-sm">
+            <div class="col-sm-3">
               <div class="card">
                 <a href="{{ project.get_absolute_url }}">
-                  <img height="120px" width="200" src="{% if project.image %} {{ project.image.url }} {% else %} {% static 'images/cfoo.jpg'%} {% endif %}">
+                  <img height="100px" width="200" src="{% if project.image %} {{ project.image.url }} {% else %} {% static 'images/cfoo.jpg'%} {% endif %}">
                 </a>
                 <div class="card-body">
                   <p class="card-text">{{ project.name}} <span> <br> <i class="text-muted">${{ project.price}}</i></span></p>
@@ -86,8 +86,8 @@
                 </div>
               </div>
           </div>
+          <p></p>
           {% endfor %}
           </div>
-        </div>
     </div> <!-- End of container -->
 {% endblock content %}
