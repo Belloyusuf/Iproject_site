@@ -1,0 +1,32 @@
+{% extends 'base2.html' %}
+{% block title %}login{% endblock title %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1>Create Account</h1>
+</div>
+{% if form.errors %}
+    <p> Incorrect password or username </p>
+{% else %}
+    <p>Please provide correct username and password to login </p>
+{% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <!-- <label for="exampleInputEmail1">Email address</label> -->
+          {{ form.username.label }}
+          {{ form.username }}
+          <!-- <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"> -->
+        </div>
+        <div class="form-group">
+          <!-- <label for="exampleInputPassword1">Password</label> -->
+          {{ form.password.label }}
+          {{ form.password}}
+          <small id="emailHelp" class="form-text text-muted">We'll never share your Password with anyone else.</small>
+          <!-- <input type="password" class="form-control" id="exampleInputPassword1"> -->
+        </div>
+        <input type="hidden" name="next" value="{{ next }}">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+{% endblock content %}

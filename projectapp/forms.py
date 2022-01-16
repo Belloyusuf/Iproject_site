@@ -3,20 +3,15 @@ from django.db.models.fields import files
 from django.db.models.fields.files import FileField
 from django.forms import ModelForm
 from django.forms import widgets
-from django.forms.widgets import EmailInput, FileInput, Select, SelectMultiple, TextInput, Textarea
+from django.forms.widgets import EmailInput, FileInput, PasswordInput, Select, SelectMultiple, TextInput, Textarea
 from . models import Wishlist, Purchase, Comment
 
 
 
-class SharebyEmail(forms.Form):
-    """ Form that would handle sharing of projects via email """
-    name = forms.CharField( max_length=50, required=True)
-    email = forms.EmailField(required=True)
-    to = forms.EmailField(required=True)
-    comments = forms.CharField(widget=forms.Textarea,required=False)
 
-
+# Customer wish list form
 class Customerform(forms.ModelForm):
+    """ A form that allowed customer to send their wishlist project """
     class Meta:
         model = Wishlist
         fields = "__all__"
@@ -42,7 +37,9 @@ class Customerform(forms.ModelForm):
         }
         
         
+# Comment form
 class CommentForm(forms.ModelForm):
+    """ class that would create comment form to users """
     class Meta:
         model = Comment
         fields = ('name', 'email', 'body', 'project')

@@ -1,34 +1,12 @@
+from django.http.response import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Category, Comment, Project, Purchase, Plan, Wishlist
-from . forms import Customerform, CommentForm, SharebyEmail
+from . forms import Customerform, CommentForm
 from django.views.generic.edit import CreateView
 from django.contrib import messages
-from django.core.mail import send_mail
+from django.contrib.auth.decorators import login_required
+# from django.core.mail import send_mail
 
-
-
-def projectShare(request, project_id):
-    # Retrive project by id
-    project = get_object_or_404(Project, id=project_id, active=True)
-    sent = True
-    if request.method == 'POST':
-        form = SharebyEmail(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
-            project_url = request.build_absolute_uri(
-                project.get_absolute_url())
-            subject = f"{cd['name']} Recommeds you to buy {project.name}" 
-            message = f"Download {project.name} at {project.url}\n\n" \
-                        f"{cd['name']}\'s comments: {cd['comments']}"
-            send_mail(subject, message, 'belloyusuf@gmail.com', [cd['to']])
-            sent = True
-    else:
-        form = SharebyEmail()
-    return render(request, 'project/share.html',
-                  {'project':project,
-                   'form':form,
-                   'sent':'sent'})
-        
         
 
 
@@ -71,7 +49,6 @@ def search(request):
     return render(request, 'project/search.html', {'data':data,
                                                    'projects':projects})
    
-   
 def UserGuid_detail(request):
     plans = Plan.objects.all()
     context = {'plans':plans,
@@ -86,7 +63,7 @@ def user_wishlist(request):
         form = Customerform(request.POST)
         if form.is_valid():
             form.save()
-            messages.add_message(request, messages.INFO, "Wish project is submitted successfully")
+            messages.add_message(request, messages.INFO, "Thanks for telling us your wish project")
             # return redirect('wishlist/')
     else:
         form = Customerform()
@@ -97,6 +74,7 @@ def user_wishlist(request):
 
 
 # comment function
+@login_required
 def user_comment(request):
     """ A form that would take care of user's coment """
     comments = Comment.objects.filter(active=True)
@@ -104,14 +82,13 @@ def user_comment(request):
         form = CommentForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.add_message(request, messages.INFO, "Thanks for your feedback")
+            messages.add_message(request, messages.INFO, "Thanks for your comment")
     else:
         form = CommentForm()
     return render(request, 'project/comment.html',
                     {'comments':comments,
                     'form':form,
                     'section':'comment'})
-
 
 
 class PurchaseCreateView(CreateView):

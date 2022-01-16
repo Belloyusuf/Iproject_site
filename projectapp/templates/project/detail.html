@@ -7,7 +7,7 @@
   <p> <span class="text-muted">Created on {{ project.created }} <br> And Updated on {{ project.updated}}</span></p>
   <a href="{% url 'purchase'%}" class="btn btn-success btn-sm">Download Complete Project <span> <i class="fa fa-download"></i></span></a>
   <a href="{% url 'comment'%}" class="btn btn-dark btn-sm ">Comment <span><i class="fa fa-comment"></i></span></a>
-  <a href="{% url 'comment'%}" class="btn btn-primary btn-sm ">Share <span><i class="fa fa-share"></i></span></a>
+  {% comment %} <a href="{% url 'project_share'%}" class="btn btn-primary btn-sm ">Share <span><i class="fa fa-share"></i></span></a> {% endcomment %}
 </div>
     <div class="container">
         <div class="media">

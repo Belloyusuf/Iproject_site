@@ -1,6 +1,11 @@
 from django.db import models
 from django.urls import reverse
 
+
+
+
+
+
 # Category class
 class Category(models.Model):
     """ Category class """

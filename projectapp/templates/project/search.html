@@ -6,12 +6,12 @@
 
 {% block content %}
     <div class="container">
-        <div class="jumbotron border shadow">
+        <div class="jumbotron border shadow" style="margin-top: 10%;">
             <h4> <span class="text-muted">You searched for</span> "{{ request.GET.q }}"</h4>
             {% if data.count == 0 %}
                 No such project. We recommend you to write it in wish list <a href="{% url 'wishlist'%}">Go ahead</a>
             {% else %}
-            <span class="text-muted">{{ data.count }} Project found</span>
+            <span class="text-muted">{{ data.count }} Project found for {{ data.name }}</span>
             {% endif %}
             <br>
             <a href="{% url 'project_list'%}" class="btn btn-success btn-sm"><span><i class="fa fa-angle-double-left"></i></span> Back to home</a>
@@ -20,19 +20,10 @@
         <div class="row">
             <div class="col-sm-12">
                  <div id="main" class="product-list">
-            <h3> {% if category %} {{ category.name }} {% else %} Projects {% endif %}</h3>
+            <h3> {% if categories %} {{ category.name }} {% endif %}</h3>
             <hr>
-                {% comment %} {% for project in projects %}
-                <div class="item">
-                    <a href="{{ project.get_absolute_url }}">
-                        <img src="{% if project.image %}" {{ project.image.url }} {% else %} {% static 'images/cfoo.jpg'%} {% endif %} alt="">
-                    </a>
-                    <a href="{{ project.get_absolute_url }}"> {{ project.name }}</a>
-                    <br>
-                    ${{ project.price}}
-                </div>
-            {% endfor %} {% endcomment %}
-
+  
+            <!-- Displaying of project's -->
             <div class="row"> 
                 {% for project in projects %}
                 <div class="col-sm-3">
@@ -43,7 +34,7 @@
                     <div class="card-body">
                       <p class="card-text">{{ project.name}} <span> <br> <i class="text-muted">${{ project.price}}</i></span></p>
                       <a href="{{ project.get_absolute_url }}" class="btn btn-secondary btn-sm" title="download project now">Download <span> <i class="fa fa-download"></i></span></a>
-                      <p class="card-text"><small class="text-muted">{{ category.name }}</small></p>
+                      <p class="card-text"><small class="text-muted"> {{ category.name }} </small></p>
                     </div>
                   </div>
               </div>
