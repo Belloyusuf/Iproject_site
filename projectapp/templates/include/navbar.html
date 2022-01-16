@@ -27,11 +27,20 @@
             {% endfor %} {% endcomment %}
           </div>
         </li>
-        <li class="nav-item">
+        {% comment %} <li class="nav-item">
           <a class="nav-link" href="{% url 'login' %}">My Account <span><i class="fa fa-user"></i></span></a>
-        </li>
+        </li> {% endcomment %}
       </ul>
      
     </div>
-    
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        {% if request.user.is_authenticated %}
+            <i style="color: white;">Hello{ {{ request.user.username }} }</i>
+            <a href="{% url 'logout' %}" style="text-decoration: none;"> Logout</a>
+        {% else %}
+          <a class="nav-link" href="{% url 'login' %}">My Account <span><i class="fa fa-user"></i></span></a>
+      {% endif %}
+    </li>
+      </ul>
   </nav>
