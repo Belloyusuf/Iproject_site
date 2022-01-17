@@ -5,12 +5,14 @@
 <div class="jumbotron">
     <h1>Create Account</h1>
 </div>
+<div class="alert alert-danger" role="alert">
+  You must create an Account before you buy a project, make comment, and wishlist
+</div>
 {% if form.errors %}
     <p> Incorrect password or username </p>
 {% else %}
     <p>Please provide correct username and password to login </p>
 {% endif %}
-
     <form method="post">
         {% csrf_token %}
         <div class="form-group">
@@ -24,9 +26,11 @@
           {{ form.password.label }}
           {{ form.password}}
           <small id="emailHelp" class="form-text text-muted">We'll never share your Password with anyone else.</small>
+          <i class="text-muted"> <a href="{% url 'password_reset'%}">Forgotten Password</a> </i>
+          <a href="{% url 'register'%}">Create Account</a>
           <!-- <input type="password" class="form-control" id="exampleInputPassword1"> -->
         </div>
         <input type="hidden" name="next" value="{{ next }}">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Login</button>
       </form>
 {% endblock content %}

@@ -55,7 +55,7 @@ def UserGuid_detail(request):
                'section':'UserGuid_detail'}
     return render(request, 'project/guide.html', context)
 
-
+@login_required
 def user_wishlist(request):
     """ function that would handle a use wishlist """
     wishlist = Wishlist.objects.all()

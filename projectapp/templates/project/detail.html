@@ -5,7 +5,7 @@
 <div class="jumbotron border shadow ">
   <h5>Project Preview for "{{ project.name}}"</h5>
   <p> <span class="text-muted">Created on {{ project.created }} <br> And Updated on {{ project.updated}}</span></p>
-  <a href="{% url 'purchase'%}" class="btn btn-success btn-sm">Download Complete Project <span> <i class="fa fa-download"></i></span></a>
+  <a href="{% url 'login'%}" class="btn btn-success btn-sm">Download Complete Project <span> <i class="fa fa-download"></i></span></a>
   <a href="{% url 'comment'%}" class="btn btn-dark btn-sm ">Comment <span><i class="fa fa-comment"></i></span></a>
   {% comment %} <a href="{% url 'project_share'%}" class="btn btn-primary btn-sm ">Share <span><i class="fa fa-share"></i></span></a> {% endcomment %}
 </div>
@@ -16,8 +16,7 @@
                 <h1>{{ project.name }}</h1>
               <h5 class="mt-0">Price ${{ project.price }}</h5>
 
-              
-              <p>I'm walking on air (tonight). But down to earth. You're original, cannot be replaced. But in another life I would be your girl. We drove to Cali and got drunk on the beach. We can dance, until we die, you and I, will be young forever. Saw you downtown singing the Blues.</p>
+            <p>{{ project.description }}</p>              
             </div>
           </div>
     </div>

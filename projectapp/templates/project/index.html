@@ -80,7 +80,7 @@
                   <img height="100px" width="200" src="{% if project.image %} {{ project.image.url }} {% else %} {% static 'images/cfoo.jpg'%} {% endif %}">
                 </a>
                 <div class="card-body">
-                  <p class="card-text">{{ project.name}} <span> <br> <i class="text-muted">${{ project.price}}</i></span></p>
+                  <p class="card-text">{{ project.name}} <span> <br> <i class="text-muted">₦{{ project.price}}</i></span></p>
                   <a href="{{ project.get_absolute_url }}" class="btn btn-secondary btn-sm" title="download project now">Download <span> <i class="fa fa-download"></i></span></a>
                   <p class="card-text"><small class="text-muted">{{ category.name }}</small></p>
                 </div>

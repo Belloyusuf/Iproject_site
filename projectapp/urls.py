@@ -3,6 +3,7 @@ from django.urls import path
 from . import views
 from .views import PurchaseCreateView
 from django.contrib.auth import views as auth_views
+from account import views as  as_views
 
 # app_name = 'app'
 
@@ -15,5 +16,7 @@ urlpatterns = [
     path('UserGuid_detail/', views.UserGuid_detail, name='UserGuid_detail'),
     path('comment/', views.user_comment, name='comment'),
     path('wishlist/', views.user_wishlist, name='wishlist'),
-    # path('purchase/', PurchaseCreateView.as_view(), name="purchase"),
+    path('purchase/', PurchaseCreateView.as_view(), name="purchase"),
+    path('register/', as_views.register, name='register')
+
 ]

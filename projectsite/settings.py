@@ -32,12 +32,12 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # Authentication 
-LOGIN_REDIRECT_URL = 'comment'
+LOGIN_REDIRECT_URL = 'comment' # Leter change it to project_list
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
-# Application definition
 
+# Application definition
 INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'django.contrib.admin',

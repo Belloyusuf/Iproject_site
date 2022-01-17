@@ -13,6 +13,17 @@
       
 </div>
 <div class="container">
+{% comment %} user login message {% endcomment %}
+{% comment %} {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+      <p {% if message.tags %} class="{{ message.tags }}"{% endif %} >{{ message }} </p>
+    </div>    {% endfor %}
+</ul>
+{% endif %} {% endcomment %}
+
+  {% comment %} comment messages {% endcomment %}
   {% if messages %}
   <ul class="messages">
       {% for message in messages %}
