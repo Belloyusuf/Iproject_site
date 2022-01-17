@@ -44,7 +44,6 @@ class LoginForm(forms.Form):
                 'placeholder':'John Smith'
             }),
             'password':PasswordInput(attrs={
-                'class':'form-control',
-                'placeholder':'******'
+                'class':'form-control'
             })
         }
