@@ -1,10 +1,6 @@
 from django.db import models
 from django.urls import reverse
-
-
-
-
-
+from django.contrib.auth.models import User
 
 # Category class
 class Category(models.Model):
@@ -85,10 +81,15 @@ class Plan(models.Model):
 
 
 class Purchase(models.Model):
-    project = models.ForeignKey(Project, verbose_name=(""), on_delete=models.CASCADE)
-    file = models.FileField(("Transaction invoice"),upload_to="purchase")
+    project_course = models.ForeignKey(Category, related_name="category", on_delete=models.CASCADE)
+    project_name = models.ForeignKey(Project, on_delete=models.CASCADE)
+    email = models.CharField(max_length=250)
+    created = models.DateTimeField(auto_now=False, auto_now_add=True)
+    upload_image = models.FileField(upload_to="purchase")
+    paid = models.BooleanField(default=False)
     
-    
+    def __str__(self):
+        return f'{self.project_course}'
 
 class Comment(models.Model):
     project = models.ForeignKey(Project, related_name='projects', on_delete=models.CASCADE)

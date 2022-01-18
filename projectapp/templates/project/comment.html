@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block content %}
-<div class="jumbotron">
+<div class="jumbotron" style="background-color:#343A40; color:white;">
     <h1>Comments </h1>
     <p>Your feedback is our strieth</p>
     <!-- Comment button-->
@@ -40,9 +40,13 @@
      {% for comment in comments %}
      <ul class="list-unstyled">
         <li class="media">
-          <img src="{% static '/images/image4.jpg'%}" style="border-radius: 25px;" height="50" width="50" class="mr-3" alt="...">
-          <div class="media-body">
-            <h5 class="mt-0 mb-1">{{ comment.name }}</h5>
+          <span style="background-color:black; 
+              color:white; font-size:xx-large; 
+              padding-right:15px; padding-left:15px; border-radius:100em;">
+            {{ comment.email|slice:":1"|capfirst }}</span>
+
+          <div class="media-body" style="padding-left: 20px;">
+            <h5 class="mt-0 mb-1 text-muted"> Comment on "{{ comment.name }}" </h5>
             <p>{{ comment.body }}</p>
             <i class="text-muted">Commented by "{{ comment.email }}" on {{ comment.created }}</i>
           </div>
@@ -86,10 +90,12 @@
                       {{ form.body }}
                     </div>
                   <button type="submit" class="btn btn-primary btn-sm btn-block">Comment</button>
-                </form>
+           </form>
         </div>
       </div>
     </div>
   </div>
 </div>
+</div>
+
 {% endblock content %}

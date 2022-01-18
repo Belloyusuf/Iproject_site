@@ -1,3 +1,56 @@
-<footer>
-    
-</footer>
+
+
+    <footer class="footer" style="background-color:#343A40; color:white;">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6" id="sell">
+              <h1>IPROJECTS</h1>
+            </div>
+            <div class="col-sm-6" id="sell">
+              <button type="button" class="btn btn-lg btn-outline-success">Sell Project</button>
+              <button type="button" class="btn btn-lg btn-warning">Advanced Projects</button>
+            </div>
+            <div class="col-sm-5">
+              <h6>About company</h6>
+              <div class="media">
+                <img src="../images//cfo.jpg" class="align-self-start mr-3" alt="Not available">
+                <div class="media-body">
+                  <h5 class="mt-0">Top-aligned media</h5>
+                  <p>I’m gon’ put her in a coma. You give a hundred reasons why, and you say you're really gonna try. So I sat quietly, agreed politely. Suiting up for my crowning battle. And on my 18th Birthday we got matching tattoos. So très chic, yeah, she's a classic. I am ready for the road less traveled.</p>
+                  <p>I'm walking on air (tonight). But down to earth. You're original, cannot be replaced. But in another life I would be your girl. We drove to Cali and got drunk on the beach. We can dance, until we die, you and I, will be young forever. Saw you downtown singing the Blues.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <h5>Company in touches with</h5>
+              <ul>
+                <li><a href="#">Informatics Singphore</a></li>
+                <li><a href="#">Mahatma Gandi University</a></li>   
+                <li><a href="#">What's new</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-2">
+              <h5>Help</h5>
+              <ul>
+                <li><a href="#">SUPPORT</a></li>
+                <li><a href="{% url 'UserGuid_detail'%}">FAQs</a></li>
+                <li><a href="{% url 'UserGuid_detail'%}">Buy Project</a></li>
+                <li><a href="{% url 'UserGuid_detail'%}">Payment Issues</a></li>
+                <li><a href="{% url 'UserGuid_detail'%}">Project Guarantee</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-2">
+              <h5>Contact us</h5>
+              <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">Email</a></li>
+                <li><a href="#">What's app</a></li>
+              </ul>
+              <p>Get exculusive resources straight to your inbox</p>
+              <button type="button" class="btn btn-outline-success"><a href="{% url 'register'%}"></a>Sign up</button>
+            </div>
+          </div>
+          <p><span>iproject.com</span> Copyright 2010-{% now "Y" %}  C-Tech company All right reserved.</p>
+        </div>
+      </footer>

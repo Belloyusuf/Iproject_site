@@ -8,3 +8,16 @@ a {
     text-decoration:none;
     /* color:#5993bb; */
 }
+.footer{
+    background-color: black;
+    color: white;
+}
+
+.user-image{
+    background-color: brown;
+    color: white;
+    border-radius: 40%;
+    font-size: large;
+    /* font-weight: bolder;
+   */
+}

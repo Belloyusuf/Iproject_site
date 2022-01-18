@@ -28,12 +28,19 @@ class UserRegistrationForm(forms.ModelForm):
             'password':PasswordInput(attrs={
                 'class':'form-control'
             }),
+            'username': TextInput(attrs={
+                'class':'form-control',
+                'placeholder':'John Smith'
+            }),
+            'password':PasswordInput(attrs={
+                'class':'form-control'
+            })
         }
 
 
 
 # User login form
-class LoginForm(forms.Form):
+class LoginForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username', 'password')
