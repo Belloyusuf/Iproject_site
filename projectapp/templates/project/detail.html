@@ -5,8 +5,8 @@
 <div class="jumbotron" style="background-color:#343A40; color:white">
   <h5>Project Preview for "{{ project.name}}"</h5>
   <p> <span class="text-muted">Created on {{ project.created }} <br> And Updated on {{ project.updated}}</span></p>
-  <a href="{% url 'purchase'%}" class="btn btn-success btn-sm">Download Complete Project <span> <i class="fa fa-download"></i></span></a>
-  <a href="{% url 'comment'%}" class="btn btn-dark btn-sm ">Comment <span><i class="fa fa-comment"></i></span></a>
+  <a href="{% url 'site_content:purchase'%}" class="btn btn-success btn-sm">Download Complete Project <span> <i class="fa fa-download"></i></span></a>
+  <a href="{% url 'site_content:comment'%}" class="btn btn-dark btn-sm ">Comment <span><i class="fa fa-comment"></i></span></a>
   {% comment %} <a href="{% url 'project_share'%}" class="btn btn-primary btn-sm ">Share <span><i class="fa fa-share"></i></span></a> {% endcomment %}
 </div>
     <div class="container">

@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% block title %} comment{% endblock title %}
+{% load static %}
+
+{% block content %}
+<div class="jumbotron" style="background-color:#343A40; color:white;">
+    <h1>Comments </h1>
+    <p>Your feedback is our strieth</p>
+    <!-- Comment button-->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+        Comment
+    </button>
+      
+</div>
+<div class="container">
+  {% if messages %}
+  <ul class="messages">
+      {% for message in messages %}
+      <div class="alert alert-success" role="alert">
+          <p {% if message.tags %} class="{{ message.tags }}"{% endif %} >{{ message }} </p>
+        </div>
+    
+      {% endfor %}
+  </ul>
+  {% endif %}
+  <h2 class="feedback">Customer's feedback </h2>
+     <hr>
+   <div class="list-group">
+     {% for comment in comments %}
+     <ul class="list-unstyled">
+       {% if comment.email|slice:':1' in 'a,b,c,d,e' %}
+       <li class="media">
+        <span style="background-color:brown; 
+            color:white; font-size:xx-large; 
+            padding-right:15px; padding-left:15px; border-radius:100em;">
+          {{ comment.email|slice:":1"|capfirst }}</span>
+
+        <div class="media-body" style="padding-left: 20px;">
+          <h5 class="mt-0 mb-1 text-muted"> Comment on "{{ comment.name }}" </h5>
+          <p>{{ comment.body }}</p>
+          <i class="text-muted">Commented by "{{ comment.email }}" on {{ comment.created }}</i>
+        </div>
+      </li>
+      {% elif comment.email|slice:':1' in 'k,l,m,n,o'%}
+      <li class="media">
+        <span style="background-color:blue; 
+            color:white; font-size:xx-large; 
+            padding-right:15px; padding-left:15px; border-radius:100em;">
+          {{ comment.email|slice:":1"|capfirst }}</span>
+
+        <div class="media-body" style="padding-left: 20px;">
+          <h5 class="mt-0 mb-1 text-muted"> Comment on "{{ comment.name }}" </h5>
+          <p>{{ comment.body }}</p>
+          <i class="text-muted">Commented by "{{ comment.email }}" on {{ comment.created }}</i>
+        </div>
+      </li>
+      {% elif comment.email|slice:':1' in 'f,g,h,i,j'%}
+      <li class="media">
+        <span style="background-color:pink; 
+            color:white; font-size:xx-large; 
+            padding-right:15px; padding-left:15px; border-radius:100em;">
+          {{ comment.email|slice:":1"|capfirst }}</span>
+
+        <div class="media-body" style="padding-left: 20px;">
+          <h5 class="mt-0 mb-1 text-muted"> Comment on "{{ comment.name }}" </h5>
+          <p>{{ comment.body }}</p>
+          <i class="text-muted">Commented by "{{ comment.email }}" on {{ comment.created }}</i>
+        </div>
+      </li>
+      {% elif comment.email|slice:':1' in 'p,q,r,s,t'%}
+      <li class="media">
+        <span style="background-color:coral; 
+            color:white; font-size:xx-large; 
+            padding-right:15px; padding-left:15px; border-radius:100em;">
+          {{ comment.email|slice:":1"|capfirst }}</span>
+
+        <div class="media-body" style="padding-left: 20px;">
+          <h5 class="mt-0 mb-1 text-muted"> Comment on "{{ comment.name }}" </h5>
+          <p>{{ comment.body }}</p>
+          <i class="text-muted">Commented by "{{ comment.email }}" on {{ comment.created }}</i>
+        </div>
+      </li>
+      {% elif comment.email|slice:':1' in 'v,w,x,y,z'%}
+      <li class="media">
+        <span style="background-color:brown; 
+            color:white; font-size:xx-large; 
+            padding-right:15px; padding-left:15px; border-radius:100em;">
+          {{ comment.email|slice:":1"|capfirst }}</span>
+
+        <div class="media-body" style="padding-left: 20px;">
+          <h5 class="mt-0 mb-1 text-muted"> Comment on "{{ comment.name }}" </h5>
+          <p>{{ comment.body }}</p>
+          <i class="text-muted">Commented by "{{ comment.email }}" on {{ comment.created }}</i>
+        </div>
+      </li>
+      {% else %}
+      <li class="media">
+        <span style="background-color:black; 
+            color:white; font-size:xx-large; 
+            padding-right:15px; padding-left:15px; border-radius:100em;">
+          {{ comment.email|slice:":1"|capfirst }}</span>
+
+        <div class="media-body" style="padding-left: 20px;">
+          <h5 class="mt-0 mb-1 text-muted"> Comment on "{{ comment.name }}" </h5>
+          <p>{{ comment.body }}</p>
+          <i class="text-muted">Commented by "{{ comment.email }}" on {{ comment.created }}</i>
+        </div>
+      </li>
+      </ul>
+    {% endif %}
+    <hr>
+  {% endfor %}
+
+      <!-- Button trigger modal -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel"> Choose project you want comment on </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form method="post">
+                <h1>Comment <span><i class="fa fa-comment"></i></span></h1>
+                <hr>
+                  {% csrf_token %}
+                  <div class="form-group">
+                      <b>{{ form.name.label}}</b>
+                      {{ form.name }}
+                    <small id="emailHelp" class="form-text text-muted">Write project Course</small>
+                  </div>
+                  <div class="form-group">
+                      <b>{{ form.email.label }}</b>
+                      {{ form.email }}
+                    </div> 
+                    <div class="form-group">
+                        <b>{{ form.project.label}}</b>
+                      {{ form.project }}
+                    </div>
+                    <div class="form-group">
+                        <b>{{ form.body.label}}</b>
+                      {{ form.body }}
+                    </div>
+                  <button type="submit" class="btn btn-primary btn-sm btn-block">Comment</button>
+           </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{% endblock content %}
