@@ -10,13 +10,13 @@
           <a class="nav-link" href="{% url 'project_list'%}">Home <span class="sr-only">(current)</span> <span><i class="fa fa-home"></i></span></a>
         </li>
         <li {% if section == 'UserGuid_detail' %}class="nav-item active"{% endif %}>
-          <a class="nav-link" href="{% url 'UserGuid_detail'%}">Issues <span><i class="fa fa-question-circle"></i></span></a>
+          <a class="nav-link" href="{% url 'site_content:UserGuid_detail'%}">Issues <span><i class="fa fa-question-circle"></i></span></a>
         </li>
         <li  {% if section == 'user_wishlist' %}class="nav-item active"{% endif %}>
-          <a class="nav-link" href="{% url 'wishlist'%}">Wish list <span><i class="fa fa-list-alt"></i></span></a>
+          <a class="nav-link" href="{% url 'site_content:wishlist'%}">Wish list <span><i class="fa fa-list-alt"></i></span></a>
         </li>
         <li {% if section == 'comment' %}  class="nav-item active" {% endif %}>
-          <a class="nav-link" href="{% url 'comment'%}">Comment's <span><i class="fa fa-comment"></i></span></a>
+          <a class="nav-link" href="{% url 'site_content:comment'%}">Comment's <span><i class="fa fa-comment"></i></span></a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
@@ -39,7 +39,7 @@
             color:white; font-size:xx-large; 
             padding-right:8px; padding-left:8px; border-radius:100em;">
             {{ request.user.username | slice:":1"|capfirst}}</span>
-            <button class="btn btn-outline-warning btn-sm"> 
+            <button class="btn btn-outline-success btn-sm"> 
               <a href="{% url 'logout' %}" style="text-decoration: none;"> Logout</a>
             </button>   
           {% else %}

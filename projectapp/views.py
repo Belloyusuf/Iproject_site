@@ -2,13 +2,12 @@ from django.core import paginator
 from django.http.response import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Category, Project
-# from . forms import  ProjectPurchase
 from django.views.generic.edit import CreateView
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-# from django.core.mail import send_mail
+
 
         
 
@@ -45,25 +44,30 @@ def project_list(request, category_slug=None):
                   'categories':categories,
                   'projects':projects,
                   'page':page,
-                  'section':'projects',
+                  'sections':'project_list', 
                   'section':'category'})
     
-
+    
+    
 def project_detail(request, id, slug):
     """ Display project's Detail """
+    categories = Category.objects.all()
     project = get_object_or_404(Project,
                                 id=id,
                                 slug=slug,
                                 available=True)
     return render(request,
                   'project/detail.html',
-                  {'project':project})
+                  {'project':project,
+                   'categories':categories,})
 
 
 def search(request):
+    categories = Category.objects.all()
     """ Fuction that cares about searching of a project topic """
     q=request.GET['q']
     projects = Project.objects.filter(name__icontains=q)
     data = Project.objects.filter(name__icontains=q).order_by('-created')
     return render(request, 'project/search.html', {'data':data,
-                                                   'projects':projects})
+                                                   'projects':projects,
+                                                   'categories':categories})

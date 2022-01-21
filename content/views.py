@@ -3,11 +3,13 @@ from django.shortcuts import render, HttpResponse, redirect
 from django.contrib import messages
 from .models import Wishlist, Plan, Comment
 from .forms import Customerform, CommentForm, ProjectPurchase
-from projectapp.models import Project
+from projectapp.models import Category, Project
 from django.contrib.auth.decorators import login_required
 
 #  WISHLIST PROJECTS
+@login_required
 def user_wishlist(request):
+    categories = Category.objects.all()
     """ function that would handle a use wishlist """
     wishlist = Wishlist.objects.all()
     if request.method=='POST':
@@ -20,21 +22,26 @@ def user_wishlist(request):
         form = Customerform()
     context = {'form':form,
                'wishlist':wishlist,
+               'categories':categories,
                'section':'user_wishlist'}
     return render(request,'content/wish.html', context)
 
 
 # USER GUID AND OUR PLANS AND PRICE
 def UserGuid_detail(request):
+    categories = Category.objects.all()
     plans = Plan.objects.all()
     context = {'plans':plans,
+               'categories':categories,
                'section':'UserGuid_detail'}
     return render(request, 'content/guide.html', context)
 
 
 # USER COMMENTS OF PROJECTS
+@login_required
 def user_comment(request):
     """ A form that would take care of user's coment """
+    categories = Category.objects.all()
     comments = Comment.objects.filter(active=True)
     if request.method=='POST':
         form = CommentForm(request.POST)
@@ -46,13 +53,16 @@ def user_comment(request):
     return render(request, 'content/comment.html',
                     {'comments':comments,
                     'form':form,
+                    'categories':categories,
                     'section':'comment'})
+
 
 # USER PURCHASE FUNCTION
 def purchaseProject(request):
+    categories = Category.objects.all()
     project = Project.objects.filter(available=True)
     if request.method == 'POST':
-        form = ProjectPurchase(request.POST)
+        form = ProjectPurchase(request.POST, request.FILES)
         if form.is_valid():
             # cd = form.cleaned_data
             form.save()
@@ -62,4 +72,5 @@ def purchaseProject(request):
         form = ProjectPurchase()
     return render(request, 'content/purchase.html',
                       {'form':form,
+                       'categories':categories,
                        'project':project})

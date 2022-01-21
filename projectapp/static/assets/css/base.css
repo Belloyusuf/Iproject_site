@@ -24,3 +24,24 @@ a {
     /* font-weight: bolder;
    */
 }
+
+/* back to top style */
+#myBtn{
+    display: none;
+    position:fixed;
+    bottom:20px;
+    right:30px;
+    Z-index:99;
+    border:none;
+    outline: none;
+    background-color: red;
+    color:white;
+    cursor:pointer;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+#myBtn:hover{
+    background-color: #555;
+}

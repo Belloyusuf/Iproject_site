@@ -5,43 +5,56 @@
 {% endblock title  %}
 
 {% block content %}
-    <div class="container">
-        <div class="jumbotron border shadow" style="margin-top: 10%;">
-            <h4> <span class="text-muted">You searched for</span> "{{ request.GET.q }}"</h4>
-            {% if data.count == 0 %}
-                No such project. We recommend you to write it in wish list <a href="{% url 'site_content:wishlist'%}">Go ahead</a>
-            {% else %}
-            <span class="text-muted">{{ data.count }} Project found for {{ data.name }}</span>
-            {% endif %}
-            <br>
-            <a href="{% url 'project_list'%}" class="btn btn-success btn-sm"><span><i class="fa fa-angle-double-left"></i></span> Back to home</a>
-        </div>
+  <div class="jumbotron" style=" margin-top:5%; background-color:#343A40; color:white;" >
+      <h4> <span class="text-muted">You searched for</span> "{{ request.GET.q }}"</h4>
+      {% if data.count == 0 %}
+          No such project. We recommend you to write it in wish list <a href="{% url 'site_content:wishlist'%}">Go ahead</a>
+      {% else %}
+      <span class="text-muted">{{ data.count }} Project's found {{ data.name }}</span>
+      {% endif %}
+      <br>
+      <a href="{% url 'project_list'%}" class="btn btn-success btn-sm"><span><i class="fa fa-angle-double-left"></i></span> Back to home</a>
+  </div>
 
-        <div class="row">
-            <div class="col-sm-12">
-                 <div id="main" class="product-list">
-            <h3> {% if categories %} {{ category.name }} {% endif %}</h3>
-            <hr>
-  
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+    <div id="main" class="product-list">  
+      {% if data.count == 0 %}
+      <h3> No Project found for "{{request.GET.q}}" !!!</h3>
+      {% else %}
+      <h3> Available project's that are similar to "{{ request.GET.q }}"</h3>
+      {% endif %}
+      <hr>
             <!-- Displaying of project's -->
-            <div class="row"> 
-                {% for project in projects %}
-                <div class="col-sm-3">
-                  <div class="card">
-                    <a href="{{ project.get_absolute_url }}">
-                      <img height="120px" width="200" src="{% if project.image %} {{ project.image.url }} {% else %} {% static 'images/cfoo.jpg'%} {% endif %}">
-                    </a>
-                    <div class="card-body">
-                      <p class="card-text">{{ project.name}} <span> <br> <i class="text-muted">${{ project.price}}</i></span></p>
-                      <a href="{{ project.get_absolute_url }}" class="btn btn-secondary btn-sm" title="download project now">Download <span> <i class="fa fa-download"></i></span></a>
-                      <p class="card-text"><small class="text-muted"> {{ category.name }} </small></p>
-                    </div>
-                  </div>
-              </div>
-              {% endfor %}
+    <div class="row"> 
+        {% for project in projects %}
+        <div class="col-sm-3">
+          <div class="card">
+            <a href="{{ project.get_absolute_url }}">
+              <img height="120px" width="200" src="{% if project.image %} {{ project.image.url }} {% else %} {% static 'images/cfoo.jpg'%} {% endif %}">
+            </a>
+            <div class="card-body">
+              <p style="margin-top:0px; margin-bottom:0px;" class="card-text">{{ project.name}} 
+                <span> <br> <b>₦{{ project.price }}</b> 
+                  <i class="text-muted"> <del>{{ project.old_price}}</del></i>
+                </span>
+              </p>
+              <p style="margin-top:0px; margin-bottom:0px;" class="card-text"><small class="text-muted"> {{project.category }} Project</small></p>
+              <a href="{{ project.get_absolute_url }}" class="btn btn-secondary btn-sm" title="download project now">
+                      Download <span> <i class="fa fa-download"></i></span>
+              </a>
             </div>
-        </div>
+          </div>
+      </div>
+      {% endfor %}
+      </div>
+      <p></p>
+      <br>
     </div>
+  </div>
+</div>
+</div>
 {% endblock content %}
 
 

@@ -57,7 +57,6 @@ class Purchase(models.Model):
     email = models.CharField(max_length=250)
     created = models.DateTimeField(auto_now=False, auto_now_add=True)
     upload_image = models.FileField(upload_to="purchase")
-    paid = models.BooleanField(default=False)
     
     def __str__(self):
         return f'{self.project_course}'

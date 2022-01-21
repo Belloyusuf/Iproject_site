@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+import uuid
 
 # Category class
 class Category(models.Model):
@@ -32,6 +33,7 @@ class Project(models.Model):
     file = models.FileField(upload_to='Projects/%Y/%m/%d', blank=False, null=False)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
+    old_price = models.DecimalField(("Last price"), max_digits=10, decimal_places=2)
     available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now=False, auto_now_add=True)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
