@@ -14,10 +14,21 @@
             <img src="{{ project.image.url }}" height="150" class="align-self-start mr-3" alt="...">
             <div class="media-body">
                 <h1>{{ project.name }}</h1>
-                <p class="text-muted">{{ project.category}} project</p>
+                <p class="text-muted">{{ project.category}} project <span><i class="fa fa-book fa-fw"></i></span></p>
               <h5 class="mt-0"> <b>Price ₦{{ project.price }}</b> <span class="text-muted"> <del>{{ project.old_price }}</del></span></h5>
 
-            <p>{{ project.description }}</p>              
+            <p>{{ project.description|truncatewords:350 }}</p>   
+            <p>{% lorem 3 b random %}</p>
+            <p></p>
+            <!-- Back to top button -->
+            <button class="btn btn-outline-secondary btn-sm" onclick="topFunction()" id="myBtn" title="Go to top">Top<span>
+              <i class="fa fa-arrow-up"></i></span>
+            </button>
+            <!-- Dowwnlaod project and comment button -->
+            <a href="{% url 'site_content:purchase'%}" class="btn btn-success btn-sm">Download Complete Project <span> <i class="fa fa-download"></i></span></a>
+            <a href="{% url 'site_content:comment'%}" class="btn btn-dark btn-sm ">Comment <span><i class="fa fa-comment"></i></span></a>
+            <p></p>
+                   
             </div>
           </div>
     </div>

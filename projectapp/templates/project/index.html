@@ -68,7 +68,6 @@
       <a {% if section == 'category' %} class="btn btn-outline-secondary btn-sm" {% endif %} href="{{ category.get_absolute_url }}" title="{{ category.name }} project">{{ category.name }}</a>
     {% endfor %}
       <hr>
-
         <!-- project list  -->
           <h3 style="background-color: black; color:white; text-align:center"> {% if  category %} {{ category.name }} project's {% else %}All Projects {% endif %}</h3>
           <hr>

@@ -69,15 +69,18 @@ class ProjectPurchase(forms.ModelForm):
         widgets = {
             'project_course':Select(attrs={
                 'class':'form-control',
-                'placeholder':'Java programming'
+                'placeholder':'Java programming',
+                'value':'',
             }),
             'project_name':Select(attrs={
                 'class':'form-control',
-                'placeholder':'Student Management Syste'
+                'placeholder':'Student Management System',
+                'value':'',
             }),
              'email':EmailInput(attrs={
                 'class':'form-control',
-                'placeholder':'anything@gmail.com'
+                'placeholder':'anything@gmail.com',
+                'value':'',
             }),
              'upload_image':FileInput(attrs={
                  'class':'form-control',

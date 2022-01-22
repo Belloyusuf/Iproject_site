@@ -1,4 +1,3 @@
-import imp
 from django.db import models
 from projectapp.models import Project, Category
 
@@ -60,3 +59,6 @@ class Purchase(models.Model):
     
     def __str__(self):
         return f'{self.project_course}'
+
+
+    

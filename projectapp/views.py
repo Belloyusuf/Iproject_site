@@ -7,8 +7,6 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-
-
         
 
 
@@ -21,6 +19,9 @@ def project_list(request, category_slug=None):
     categories = Category.objects.all()
     projects = Project.objects.filter(available=True)
     
+    # Purchase form message
+    messages.add_message(request, messages.SUCCESS, "Your project topic would be sent to you via your Email Address")
+
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         projects = projects.filter(category=category)
@@ -61,6 +62,9 @@ def project_detail(request, id, slug):
                   {'project':project,
                    'categories':categories,})
 
+def index(request):
+    return HttpResponse('Hello')
+
 
 def search(request):
     categories = Category.objects.all()
@@ -71,3 +75,5 @@ def search(request):
     return render(request, 'project/search.html', {'data':data,
                                                    'projects':projects,
                                                    'categories':categories})
+    
+    

@@ -11,5 +11,6 @@ urlpatterns = [
     path('UserGuid_detail/', views.UserGuid_detail, name='UserGuid_detail'),
     path('comment/', views.user_comment, name='comment'),
     path('purchase/', views.purchaseProject, name="purchase"),
+    path('done/', views.purchaseDone, name='done')
 
 ]

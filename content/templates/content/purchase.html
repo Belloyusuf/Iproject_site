@@ -16,14 +16,15 @@
             <li><span class="text-muted">Account Number:</span><b>0451205941</b></li>
             <li><span class="text-muted">Account Name:</span><b>Coding Techonoloy Limited</b></li>
         </ul>
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form }}
             <p></p>
-            <input type="submit" value="Submit" class="btn btn-success">
+            <input class="btn btn-success btn-lg btn-block" type="submit" value="Submit">
+            <!-- <button type="button" class="btn btn-success btn-lg btn-block">Submit</button>           -->
             <p></p>
         </form>
-        {% if messages %}
+        <!-- {% if messages %}
         <ul class="messages">
             {% for message in messages %}
             <div class="alert alert-success" role="alert">
@@ -32,9 +33,10 @@
           
             {% endfor %}
         </ul>
-        {% endif %}
+        {% endif %} -->
         <!-- <button type="button" class="btn btn-dark btn-lg btn-block">Or</button>
         <P>Please send your project topic and email address after payment us</P> -->
         <button type="button" class="btn btn-primary btn-lg btn-block">PAY WITH PAYPAL</button>
+    <br>
     </div>
 {% endblock content %}

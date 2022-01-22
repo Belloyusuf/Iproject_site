@@ -1,6 +1,6 @@
 from django.contrib import admin
 from . models import Category, Project
-from django.contrib.auth.models import User
+
 
 
 admin.site.site_header = "C-Tech Company Limited"

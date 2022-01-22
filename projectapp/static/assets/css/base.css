@@ -30,11 +30,11 @@ a {
     display: none;
     position:fixed;
     bottom:20px;
-    right:30px;
+    right:100%;
     Z-index:99;
     border:none;
     outline: none;
-    background-color: red;
+    background-color:gray;
     color:white;
     cursor:pointer;
     padding: 15px;
