@@ -2,7 +2,7 @@ import imp
 from re import I
 from django import forms
 from .models import Wishlist, Comment, Purchase
-from django.forms.widgets import EmailInput, FileInput, PasswordInput, Select, SelectMultiple, TextInput, Textarea
+from django.forms.widgets import EmailInput, FileInput, PasswordInput, Select, SelectMultiple, TextInput, Textarea, NumberInput
 
 
 class Customerform(forms.ModelForm):
@@ -75,6 +75,11 @@ class ProjectPurchase(forms.ModelForm):
             'project_name':Select(attrs={
                 'class':'form-control',
                 'placeholder':'Student Management System',
+                'value':'',
+            }),
+            'phone':NumberInput(attrs={
+                'class':'form-control',
+                'placeholder':'Enter phone',
                 'value':'',
             }),
              'email':EmailInput(attrs={

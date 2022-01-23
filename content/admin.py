@@ -25,5 +25,5 @@ class CommentAdmin(admin.ModelAdmin):
 
 @admin.register(Purchase)
 class PurchaseAdmin(admin.ModelAdmin):
-    list_display = ('id', 'project_course', 'project_name', 'email', 'created', 'upload_image')
+    list_display = ('id', 'project_course', 'project_name', 'phone', 'email', 'created', 'upload_image')
     list_filter = ('created', 'email', 'project_course')

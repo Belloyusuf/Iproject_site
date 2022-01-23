@@ -71,8 +71,10 @@ def search(request):
     """ Fuction that cares about searching of a project topic """
     q=request.GET['q']
     projects = Project.objects.filter(name__icontains=q)
+    available_project = Project.objects.filter(available=True)
     data = Project.objects.filter(name__icontains=q).order_by('-created')
     return render(request, 'project/search.html', {'data':data,
+                                                   'available_project':available_project,
                                                    'projects':projects,
                                                    'categories':categories})
     

@@ -53,6 +53,7 @@ class Comment(models.Model):
 class Purchase(models.Model):
     project_course = models.ForeignKey(Category, related_name="category", on_delete=models.CASCADE)
     project_name = models.ForeignKey(Project, on_delete=models.CASCADE)
+    phone = models.CharField(("Phone number"), max_length=20)
     email = models.CharField(max_length=250)
     created = models.DateTimeField(auto_now=False, auto_now_add=True)
     upload_image = models.FileField(upload_to="purchase")

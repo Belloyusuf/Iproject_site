@@ -76,8 +76,8 @@ def purchaseProject(request):
                 project_course = cd['project_course'],
                 project_name = cd['project_name'],
                 email = cd['email'],
+                phone = cd['phone'],
                 upload_image=cd['upload_image'])
-            
             user_purchase.save()
             messages.add_message(request, messages.SUCCESS, "Your project topic would be sent to you via your Email Address")
             return redirect('/content/done/')
@@ -99,5 +99,7 @@ def purchaseDone(request):
                   {'user_info':user_info,
                    'project':project,
                    'category':category})
+    
+
     
 

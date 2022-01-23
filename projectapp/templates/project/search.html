@@ -28,6 +28,9 @@
       <hr>
             <!-- Displaying of project's -->
     <div class="row"> 
+      
+     
+        {% if available_project == True %}
         {% for project in projects %}
         <div class="col-sm-3">
           <div class="card">
@@ -47,7 +50,11 @@
             </div>
           </div>
       </div>
+      {% else %}
+      no project
       {% endfor %}
+      {% endif %}
+      
       </div>
       <p></p>
       <br>
