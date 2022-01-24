@@ -17,42 +17,39 @@
               <p class="text-muted">{{ project.category}} project <span><i class="fa fa-book fa-fw"></i></span></p>
               <h5 class="mt-0"> <b>Price ₦{{ project.price }}</b> <span class="text-muted"> <del>{{ project.old_price }}</del></span></h5>
               <p></p>
-              <img src="{{ project.table_img.url}}" alt="" srcset="">
-              
-              <!-- project description  -->
-              <!-- Table of content image  -->
-              <br>
-              <img src="{{ project.description.table_img.url }}" alt="" srcset="">
-              <p>
-                <!-- for extra space  -->
-              </p>
-              <!-- Project Introduction -->
-              <h3>{{ project.description.introduction|capfirst}}</h3>
-              <p style="border-left: 3px solid brown; padding-left:5px"> {{ project.description.intro_desc }}</p>
-              <!-- Current system  -->
-              <h3>{{ project.description.current|capfirst}}</h3>
-              <p style="border-left: 3px solid brown; padding-left:5px">{{ project.description.current_desc }}</p>
-              <!-- Proposed New System  -->
-              <h3>{{ project.description.proposed|capfirst}}</h3>
-              <p style="border-left: 3px solid brown; padding-left:5px">{{ project.description.prop_desc }}</p>
-              <!-- Problem with current system -->
-              <h3>{{ project.description.problem|capfirst}}</h3>
-              <p style="border-left: 3px solid brown; padding-left:5px">{{ project.description.problem_desc }}</p>
-              <!-- Objective of the project -->
-              <h3>{{ project.description.objectives|capfirst}}</h3>
-              <p style="border-left: 3px solid brown; padding-left:5px">{{ project.description.obj_desc }}</p>
-              <!-- <p>{% lorem 3 b random %}</p> -->
-              <p></p>
-            <!-- Back to top button -->
-            <button class="btn btn-outline-secondary btn-sm" onclick="topFunction()" id="myBtn" title="Go to top">Top<span>
-              <i class="fa fa-arrow-up"></i></span>
-            </button>
-            <!-- Dowwnlaod project and comment button -->
-            <a href="{% url 'site_content:purchase'%}" class="btn btn-success btn-sm">Download Complete Project <span> <i class="fa fa-download"></i></span></a>
-            <a href="{% url 'site_content:comment'%}" class="btn btn-dark btn-sm ">Comment <span><i class="fa fa-comment"></i></span></a>
-            <p></p>
-                   
-            </div>
-          </div>
+            </div> <!-- End of media-body div -->
+          </div> <!-- End of media div -->
+        
+          <!-- ===================================================================================== -->
+          <!-- project description  -->
+          <!-- Table of content image  -->
+          <p> <!-- for extra space  --> </p>
+          <h1>Project Preview</h1>
+          <hr>
+          <p><!-- for extra space  --></p>
+          <img src="{{ project.description.table_img.url }}" alt="" srcset="">
+          <p> <!-- for extra space  --> </p>
+          <!-- Project Introduction -->
+          <h3>{{ project.description.introduction|capfirst}}</h3>
+          <p style="border-left: 3px solid brown; padding-left:5px"> {{ project.description.intro_desc }}</p>
+          <!-- Current system  -->
+          <h3>{{ project.description.current|capfirst}}</h3>
+          <p style="border-left: 3px solid brown; padding-left:5px">{{ project.description.current_desc }}</p>
+          <!-- Proposed New System  -->
+          <h3>{{ project.description.proposed|capfirst}}</h3>
+          <p style="border-left: 3px solid brown; padding-left:5px">{{ project.description.prop_desc }}</p>
+          <!-- Problem with current system -->
+          <h3>{{ project.description.problem|capfirst}}</h3>
+          <p style="border-left: 3px solid brown; padding-left:5px">{{ project.description.problem_desc }}</p>
+          <!-- Objective of the project -->
+          <h3>{{ project.description.objectives|capfirst}}</h3>
+          <p style="border-left: 3px solid brown; padding-left:5px">{{ project.description.obj_desc }}</p>
+          <!-- <p>{% lorem 3 b random %}</p> -->
+          <p></p>
+          <!-- Dowwnlaod project and comment button -->
+          <a href="{% url 'site_content:purchase'%}" class="btn btn-success btn-sm">Download Complete Project <span> <i class="fa fa-download"></i></span></a>
+          <a href="{% url 'site_content:comment'%}" class="btn btn-dark btn-sm ">Comment <span><i class="fa fa-comment"></i></span></a>
+          <p></p>
+ 
     </div>
 {% endblock content %}
