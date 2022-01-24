@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Category, Project
+from . models import Category, Project, ProjectDetail
 
 
 
@@ -17,4 +17,10 @@ class ProjectAdmin(admin.ModelAdmin):
     list_filter = ['available', 'created', 'updated']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug':('name',)}
+    
+    
+@admin.register(ProjectDetail)
+class ProjectDetailAdmin(admin.ModelAdmin):
+    list_display = ['introduction', 'intro_desc', 'current', 'current_desc', 
+                    'problem', 'problem_desc', 'proposed', 'prop_desc', 'objectives', 'obj_desc']
     

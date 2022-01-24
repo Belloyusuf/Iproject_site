@@ -14,146 +14,148 @@
   </button>
 </div>
 
+<!-- Flash message -->
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+        <p {% if message.tags %} class="{{ message.tags }}"{% endif %} >{{ message }} </p>
+      </div>
+  
+    {% endfor %}
+</ul>
+{% endif %}
+
 <div class="container">
-      {% if messages %}
-      <ul class="messages">
-          {% for message in messages %}
-          <div class="alert alert-success" role="alert">
-              <p {% if message.tags %} class="{{ message.tags }}"{% endif %} >{{ message }} </p>
-            </div>
-        
-          {% endfor %}
-      </ul>
+      <h1>Project that are wished to be </h1>
+      <hr>
+
+    <!-- User's wishlist projects  -->
+      {% for  wish in wishlist %}
+      <ul class="list-unstyled">
+        {% if wish.email|slice:':1' in 'a,b,c,d' %}
+        <li class="media">
+          <span style="background-color:blue; 
+                        color:white; font-size:xx-large; 
+                        padding-right:15px; padding-left:15px; border-radius:100em;">
+                      {{ wish.email|slice:":1"|capfirst }} </span>
+          <div class="media-body" style="padding-left: 20px;">
+            <h5 class="mt-0 mb-1">{{ wish.name }}</h5>
+            <h6><i class="text-muted">{{ wish.course }}</i></h6>
+            <p style="padding-right: 5px solid brown;"> {{ wish.description }}</p>
+            <p class="text-muted">Posted by "{{ wish.email }}" on {{ wish.created }}</p>
+          </div>
+        </li>
+        {% elif wish.email|slice:':1' in 'k,l,m,n,o'%}
+        <li class="media">
+          <span style="background-color:orange; 
+                        color:white; font-size:xx-large; 
+                        padding-right:15px; padding-left:15px; border-radius:100em;">
+                      {{ wish.email|slice:":1"|capfirst }} </span>
+          <div class="media-body" style="padding-left: 20px;">
+            <h5 class="mt-0 mb-1">{{ wish.name }}</h5>
+            <h6><i class="text-muted">{{ wish.course }}</i></h6>
+            <p style="padding-right: 5px solid brown;"> {{ wish.description }}</p>
+            <p class="text-muted">Posted by "{{ wish.email }}" on {{ wish.created }}</p>
+          </div>
+        </li>
+        {% elif wish.email|slice:':1' in 'f,g,h,i,j'%}
+        <li class="media">
+          <span style="background-color:black; 
+                        color:white; font-size:xx-large; 
+                        padding-right:15px; padding-left:15px; border-radius:100em;">
+                      {{ wish.email|slice:":1"|capfirst }} </span>
+          <div class="media-body" style="padding-left: 20px;">
+            <h5 class="mt-0 mb-1">{{ wish.name }}</h5>
+            <h6><i class="text-muted">{{ wish.course }}</i></h6>
+            <p style="padding-right: 5px solid brown;"> {{ wish.description }}</p>
+            <p class="text-muted">Posted by "{{ wish.email }}" on {{ wish.created }}</p>
+          </div>
+        </li>
+        {% elif wish.email|slice:':1' in 'p,q,r,s,t'%}
+        <li class="media">
+          <span style="background-color:coral; 
+                        color:white; font-size:xx-large; 
+                        padding-right:15px; padding-left:15px; border-radius:100em;">
+                      {{ wish.email|slice:":1"|capfirst }} </span>
+          <div class="media-body" style="padding-left: 20px;">
+            <h5 class="mt-0 mb-1">{{ wish.name }}</h5>
+            <h6><i class="text-muted">{{ wish.course }}</i></h6>
+            <p style="padding-right: 5px solid brown;"> {{ wish.description }}</p>
+            <p class="text-muted">Posted by "{{ wish.email }}" on {{ wish.created }}</p>
+          </div>
+        </li>
+        {% elif wish.email|slice:':1' in 'v,w,x,y,z'%}
+        <li class="media">
+          <span style="background-color:brown; 
+                        color:white; font-size:xx-large; 
+                        padding-right:15px; padding-left:15px; border-radius:100em;">
+                      {{ wish.email|slice:":1"|capfirst }} </span>
+          <div class="media-body" style="padding-left: 20px;">
+            <h5 class="mt-0 mb-1">{{ wish.name }}</h5>
+            <h6><i class="text-muted">{{ wish.course }}</i></h6>
+            <p style="padding-right: 5px solid brown;"> {{ wish.description }}</p>
+            <p class="text-muted">Posted by "{{ wish.email }}" on {{ wish.created }}</p>
+          </div>
+        </li>
+        {% else %}
+        <li class="media">
+          <span style="background-color:gray; 
+                        color:white; font-size:xx-large; 
+                        padding-right:15px; padding-left:15px; border-radius:100em;">
+                      {{ wish.email|slice:":1"|capfirst }} </span>
+          <div class="media-body" style="padding-left: 20px;">
+            <h5 class="mt-0 mb-1">{{ wish.name }}</h5>
+            <h6><i class="text-muted">{{ wish.course }}</i></h6>
+            <p style="padding-right: 5px solid brown;"> {{ wish.description }}</p>
+            <p class="text-muted">Posted by "{{ wish.email }}" on {{ wish.created }}</p>
+          </div>
+        </li>
+      </ul> 
       {% endif %}
-        <h1>Project that are wished to be </h1>
+      <hr>
+    {% endfor %}
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Wishlist Form</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            
+      <form method="post">
+        <h1>Add your Wishlist</h1>
         <hr>
-
-      <!-- User's wishlist projects  -->
-        {% for  wish in wishlist %}
-        <ul class="list-unstyled">
-          {% if wish.email|slice:':1' in 'a,b,c,d' %}
-          <li class="media">
-            <span style="background-color:blue; 
-                         color:white; font-size:xx-large; 
-                         padding-right:15px; padding-left:15px; border-radius:100em;">
-                        {{ wish.email|slice:":1"|capfirst }} </span>
-            <div class="media-body" style="padding-left: 20px;">
-              <h5 class="mt-0 mb-1">{{ wish.name }}</h5>
-              <h6><i class="text-muted">{{ wish.course }}</i></h6>
-              <p style="padding-right: 5px solid brown;"> {{ wish.description }}</p>
-              <p class="text-muted">Posted by "{{ wish.email }}" on {{ wish.created }}</p>
-            </div>
-          </li>
-          {% elif wish.email|slice:':1' in 'k,l,m,n,o'%}
-          <li class="media">
-            <span style="background-color:orange; 
-                         color:white; font-size:xx-large; 
-                         padding-right:15px; padding-left:15px; border-radius:100em;">
-                        {{ wish.email|slice:":1"|capfirst }} </span>
-            <div class="media-body" style="padding-left: 20px;">
-              <h5 class="mt-0 mb-1">{{ wish.name }}</h5>
-              <h6><i class="text-muted">{{ wish.course }}</i></h6>
-              <p style="padding-right: 5px solid brown;"> {{ wish.description }}</p>
-              <p class="text-muted">Posted by "{{ wish.email }}" on {{ wish.created }}</p>
-            </div>
-          </li>
-          {% elif wish.email|slice:':1' in 'f,g,h,i,j'%}
-          <li class="media">
-            <span style="background-color:black; 
-                         color:white; font-size:xx-large; 
-                         padding-right:15px; padding-left:15px; border-radius:100em;">
-                        {{ wish.email|slice:":1"|capfirst }} </span>
-            <div class="media-body" style="padding-left: 20px;">
-              <h5 class="mt-0 mb-1">{{ wish.name }}</h5>
-              <h6><i class="text-muted">{{ wish.course }}</i></h6>
-              <p style="padding-right: 5px solid brown;"> {{ wish.description }}</p>
-              <p class="text-muted">Posted by "{{ wish.email }}" on {{ wish.created }}</p>
-            </div>
-          </li>
-          {% elif wish.email|slice:':1' in 'p,q,r,s,t'%}
-          <li class="media">
-            <span style="background-color:coral; 
-                         color:white; font-size:xx-large; 
-                         padding-right:15px; padding-left:15px; border-radius:100em;">
-                        {{ wish.email|slice:":1"|capfirst }} </span>
-            <div class="media-body" style="padding-left: 20px;">
-              <h5 class="mt-0 mb-1">{{ wish.name }}</h5>
-              <h6><i class="text-muted">{{ wish.course }}</i></h6>
-              <p style="padding-right: 5px solid brown;"> {{ wish.description }}</p>
-              <p class="text-muted">Posted by "{{ wish.email }}" on {{ wish.created }}</p>
-            </div>
-          </li>
-          {% elif wish.email|slice:':1' in 'v,w,x,y,z'%}
-          <li class="media">
-            <span style="background-color:brown; 
-                         color:white; font-size:xx-large; 
-                         padding-right:15px; padding-left:15px; border-radius:100em;">
-                        {{ wish.email|slice:":1"|capfirst }} </span>
-            <div class="media-body" style="padding-left: 20px;">
-              <h5 class="mt-0 mb-1">{{ wish.name }}</h5>
-              <h6><i class="text-muted">{{ wish.course }}</i></h6>
-              <p style="padding-right: 5px solid brown;"> {{ wish.description }}</p>
-              <p class="text-muted">Posted by "{{ wish.email }}" on {{ wish.created }}</p>
-            </div>
-          </li>
-          {% else %}
-          <li class="media">
-            <span style="background-color:gray; 
-                         color:white; font-size:xx-large; 
-                         padding-right:15px; padding-left:15px; border-radius:100em;">
-                        {{ wish.email|slice:":1"|capfirst }} </span>
-            <div class="media-body" style="padding-left: 20px;">
-              <h5 class="mt-0 mb-1">{{ wish.name }}</h5>
-              <h6><i class="text-muted">{{ wish.course }}</i></h6>
-              <p style="padding-right: 5px solid brown;"> {{ wish.description }}</p>
-              <p class="text-muted">Posted by "{{ wish.email }}" on {{ wish.created }}</p>
-            </div>
-          </li>
-        </ul> 
-        {% endif %}
-        <hr>
-      {% endfor %}
-
-
-      <!-- Modal -->
-      <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Wishlist Form</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              
-        <form method="post">
-          <h1>Add your Wishlist</h1>
-          <hr>
-            {% csrf_token %}
+          {% csrf_token %}
+          <div class="form-group">
+              <b>{{ form.course.label}}</b>
+              {{ form.course }}
+            <small id="emailHelp" class="form-text text-muted">Write project Course</small>
+          </div>
+          <div class="form-group">
+            <b>{{ form.topic.label }}</b>
+            {{ form.topic }}
+          </div>
+          <div class="form-group">
+              <b>{{ form.email.label }}</b>
+              {{ form.email }}
+            </div> 
             <div class="form-group">
-                <b>{{ form.course.label}}</b>
-                {{ form.course }}
-              <small id="emailHelp" class="form-text text-muted">Write project Course</small>
+                <b>{{ form.description.label}}</b>
+              {{ form.description }}
             </div>
-            <div class="form-group">
-              <b>{{ form.topic.label }}</b>
-              {{ form.topic }}
-            </div>
-            <div class="form-group">
-                <b>{{ form.email.label }}</b>
-                {{ form.email }}
-              </div> 
-              <div class="form-group">
-                  <b>{{ form.description.label}}</b>
-                {{ form.description }}
-              </div>
-            <button type="submit" class="btn btn-primary btn-sm btn-block">Submit</button>
-          </form>
-        </div>
+          <button type="submit" class="btn btn-primary btn-sm btn-block">Submit</button>
+        </form>
       </div>
     </div>
   </div>
+</div>
   <!-- back to top button  -->
   <button class="btn btn-outline-secondary" onclick="topFunction()" id="myBtn" title="Go to top">
     Top

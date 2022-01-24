@@ -1,7 +1,7 @@
 from django.core import paginator
 from django.http.response import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Category, Project
+from .models import Category, Project, ProjectDetail
 from django.views.generic.edit import CreateView
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -18,6 +18,7 @@ def project_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
     projects = Project.objects.filter(available=True)
+    project_file = ProjectDetail.objects.all()
     
     # Purchase form message
     messages.add_message(request, messages.SUCCESS, "Your project topic would be sent to you via your Email Address")
@@ -44,6 +45,7 @@ def project_list(request, category_slug=None):
                   {'category':category,
                   'categories':categories,
                   'projects':projects,
+                  'project_file':project_file,
                   'page':page,
                   'sections':'project_list', 
                   'section':'category'})

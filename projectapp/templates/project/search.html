@@ -29,9 +29,7 @@
             <!-- Displaying of project's -->
     <div class="row"> 
       
-     
-        {% if available_project == True %}
-        {% for project in projects %}
+      {% for project in projects %}
         <div class="col-sm-3">
           <div class="card">
             <a href="{{ project.get_absolute_url }}">
@@ -50,11 +48,7 @@
             </div>
           </div>
       </div>
-      {% else %}
-      no project
       {% endfor %}
-      {% endif %}
-      
       </div>
       <p></p>
       <br>
