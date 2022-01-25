@@ -70,6 +70,7 @@ class Project(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     old_price = models.DecimalField(("Last price"), 
                                     max_digits=10, decimal_places=2)
+    rating = models.IntegerField(("Project Ratings"), default=0)
     available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now=False, auto_now_add=True)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
