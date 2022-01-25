@@ -17,7 +17,7 @@ def user_wishlist(request):
         if form.is_valid():
             form.save()
             messages.add_message(request, messages.INFO, "Thanks for telling us your wish project")
-            # return redirect('wishlist/')
+            return redirect('/content/wishlist/')
     else:
         form = Customerform()
     context = {'form':form,
@@ -93,7 +93,6 @@ def purchaseDone(request):
     project = Project.objects.filter(available=True)
     category = Category.objects.all()
     user_info = Purchase.objects.all()
-    messages.add_message(request, messages.SUCCESS, "Your project topic would be sent to you via your Email Address")
     return render(request, 
                   'content/purchase_done.html', 
                   {'user_info':user_info,

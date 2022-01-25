@@ -39,7 +39,8 @@
           {{ comment.email|slice:":1"|capfirst }}</span>
 
         <div class="media-body" style="padding-left: 20px;">
-          <h5 class="mt-0 mb-1 text-muted"> Comment on "{{ comment.name }}" </h5>
+          <h5 class="mt-0 mb-1 text-muted"> Comment by {{ comment.name }}</h5>
+          <i class="text-muted">___On "{{ comment.project}}" Project</i>
           <p>{{ comment.body }}</p>
           <i class="text-muted">Commented by "{{ comment.email }}" on {{ comment.created }}</i>
         </div>
@@ -52,7 +53,8 @@
           {{ comment.email|slice:":1"|capfirst }}</span>
 
         <div class="media-body" style="padding-left: 20px;">
-          <h5 class="mt-0 mb-1 text-muted"> Comment on "{{ comment.name }}" </h5>
+          <h5 class="mt-0 mb-1 text-muted"> Comment by {{ comment.name }}</h5>
+          <i class="text-muted">___On "{{ comment.project}}" Project</i>
           <p>{{ comment.body }}</p>
           <i class="text-muted">Commented by "{{ comment.email }}" on {{ comment.created }}</i>
         </div>
@@ -65,8 +67,8 @@
           {{ comment.email|slice:":1"|capfirst }}</span>
 
         <div class="media-body" style="padding-left: 20px;">
-          <h5 class="mt-0 mb-1 text-muted"> Comment on "{{ comment.name }}" </h5>
-          <p>{{ comment.body }}</p>
+          <h5 class="mt-0 mb-1 text-muted"> Comment by {{ comment.name }}</h5>
+          <i class="text-muted">___On "{{ comment.project}}" Project</i>          <p>{{ comment.body }}</p>
           <i class="text-muted">Commented by "{{ comment.email }}" on {{ comment.created }}</i>
         </div>
       </li>
@@ -78,8 +80,8 @@
           {{ comment.email|slice:":1"|capfirst }}</span>
 
         <div class="media-body" style="padding-left: 20px;">
-          <h5 class="mt-0 mb-1 text-muted"> Comment on "{{ comment.name }}" </h5>
-          <p>{{ comment.body }}</p>
+          <h5 class="mt-0 mb-1 text-muted"> Comment by {{ comment.name }}</h5>
+          <i class="text-muted">___On "{{ comment.project}}"" Project</i>          <p>{{ comment.body }}</p>
           <i class="text-muted">Commented by "{{ comment.email }}" on {{ comment.created }}</i>
         </div>
       </li>
@@ -91,8 +93,8 @@
           {{ comment.email|slice:":1"|capfirst }}</span>
 
         <div class="media-body" style="padding-left: 20px;">
-          <h5 class="mt-0 mb-1 text-muted"> Comment on "{{ comment.name }}" </h5>
-          <p>{{ comment.body }}</p>
+          <h5 class="mt-0 mb-1 text-muted"> Comment by {{ comment.name }}</h5>
+          <i class="text-muted">___On "{{ comment.project}}" Project</i>          <p>{{ comment.body }}</p>
           <i class="text-muted">Commented by "{{ comment.email }}" on {{ comment.created }}</i>
         </div>
       </li>
@@ -104,8 +106,8 @@
           {{ comment.email|slice:":1"|capfirst }}</span>
 
         <div class="media-body" style="padding-left: 20px;">
-          <h5 class="mt-0 mb-1 text-muted"> Comment on "{{ comment.name }}" </h5>
-          <p>{{ comment.body }}</p>
+          <h5 class="mt-0 mb-1 text-muted"> Comment by {{ comment.name }}</h5>
+          <i class="text-muted">___On "{{ comment.project}}" Project</i>          <p>{{ comment.body }}</p>
           <i class="text-muted">Commented by "{{ comment.email }}" on {{ comment.created }}</i>
         </div>
       </li>
@@ -134,7 +136,6 @@
                   <div class="form-group">
                       <b>{{ form.name.label}}</b>
                       {{ form.name }}
-                    <small id="emailHelp" class="form-text text-muted">Write project Course</small>
                   </div>
                   <div class="form-group">
                       <b>{{ form.email.label }}</b>
@@ -143,6 +144,7 @@
                     <div class="form-group">
                         <b>{{ form.project.label}}</b>
                       {{ form.project }}
+                      <small id="emailHelp" class="form-text text-muted">Select project Course</small>
                     </div>
                     <div class="form-group">
                         <b>{{ form.body.label}}</b>
